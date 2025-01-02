@@ -24,7 +24,6 @@ app.get("/browse", async (req, res) => {
     // browse cocktail by names
     const result = await axios.get(`https://www.thecocktaildb.com/api/json/v1/1/search.php?s=${searchName}`);
     const drinks = result.data.drinks || null; 
-    console.log(drinks[0]);
     res.render("browse.ejs", { content: drinks });
   } catch (error) {
     res.render("browse.ejs", {content: null, error: error.message });
