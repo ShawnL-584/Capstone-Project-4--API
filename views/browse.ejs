@@ -1,0 +1,62 @@
+<%- include('partials/header.ejs') %>
+
+<main>
+  <% if (content) { %>
+  <div class="container text-center">
+    <div class="row">
+      <% content.forEach(drink => { %>
+      <div class="col-lg-4 mt-5">
+        <img src="<%= drink.strDrinkThumb%>" alt="drink-image" width="140"
+          height="140" class="rounded">
+        </svg>
+        <h3 class="text-white my-2 drink-name">
+          <span class="text-bg-dark"><%= drink.strDrink %></span>
+        </h3>
+        <!-- instruction button -->
+        <p><button type="button" class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#InstructionModal"> Instruction »</button></p>
+      
+        
+
+    <div class="modal fade" id="InstructionModal" tabindex="-1" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-body">
+            <h2>Instruction</h2>
+            <p><%= drink.strInstructions %></p>
+          </div>
+
+          <div class="modal-body">
+            <h2>Ingredients</h2>
+            <div class="ingredients-list">
+              <% Object.keys(drink).forEach(key => { %> <% if (key.startsWith('strIngredient') && drink[key]) { %>
+              <div>
+                <span class="ingredients-measure">
+                  <%= drink[`strMeasure${key.replace('strIngredient', '')}`] || '' %>
+                </span>
+                <span class="ingredients-name"> <%= drink[key] %></span>
+              </div>
+              <% } %> <% }) %>
+            </div>
+          </div>
+
+          <div>
+            <h4>Glass - <%= drink.strGlass %></h4>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          </div>
+        </div>
+      </div>
+    </div>
+        <!-- instruction button ends -->
+      </div>
+      <!-- /.col-lg-4 -->
+      <% }) %>
+    </div>
+  </div>
+  <% } else {%>
+    <h1 class="text-center text-white text-bg-dark" >No drinks found</h1>
+  <% }%>
+</main>
+
+<%- include('partials/footer.ejs') %>

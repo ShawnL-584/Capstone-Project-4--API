@@ -1,0 +1,161 @@
+:root {
+  --card-height: 70vh;
+  --card-width: calc(var(--card-height) / 1.2);
+}
+
+
+.nav-link{
+  font-family:"Caveat", serif;
+  font-size: 30px;
+}
+body{
+   background-image: url('/images/bg-bar.jpg');
+   background-size: cover;
+   min-height: 100vh;
+   display: flex;
+   flex-direction: column;
+}
+main{
+  flex: 1;
+}
+.index-bg{
+  background-image: url('/images/bg-bar.jpg');
+  background-size: cover; 
+  height:90vh;
+}
+
+h1{
+  color: white;
+  font-family:"Caveat", serif;
+  margin-bottom: 20px;
+  font-size: 40px;
+}
+
+body div div div,
+body div div div .card
+{
+  align-items: center;
+  justify-content: center;
+}
+
+/* card */
+.card {
+  background: url("/images/table.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  margin: 0 auto; 
+  width: var(--card-width);
+  height: var(--card-height);
+  padding: 3px;
+  font-size: 1.2rem;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  font-family: "Gloria Hallelujah", cursive;
+  color: white;
+  position:relative;
+  border-radius: 6px;
+}
+
+.card::before {
+  content: "";
+  width: 104%;
+  height: 102%;
+  border-radius: 8px;
+  background-image: linear-gradient(
+    var(--rotate),
+    #5ddcff,
+    #3c67e3 43%,
+    #4e00c2
+  );
+  position: absolute;
+  z-index: -1;
+  top: -1%;
+  left: -2%;
+  animation: spin 2.5s linear infinite;
+}
+
+@property --rotate {
+  syntax: "<angle>";
+  initial-value: 132deg;
+  inherits: false;
+}
+
+@keyframes spin {
+  0% {
+    --rotate: 0deg;
+  }
+  100% {
+    --rotate: 360deg;
+  }
+}  
+
+
+
+.ingredients-list div {
+  display: flex; /* Use Flexbox to arrange items */
+  justify-content: space-between; /* Space the items apart */
+  align-items: center; /* Align vertically in the center */
+  width: 100%; /* Make each `li` the same width */
+  border-bottom: 1px solid #ddd; /* Optional: Add a divider between items */
+  font-size: 1.5rem;
+}
+
+.ingredients-name {
+  text-align: right; 
+  margin-left: 8px;
+
+}
+
+
+
+.drink-name{
+  font-size: 30px;
+  color: white;
+  font-family:"Caveat", serif;
+}
+
+.modal-content{
+  font-family: "Caveat", serif;
+  background-color: black;
+}
+
+.modal{
+  color: white;
+  font-size: 2rem;
+}
+
+.modal-footer{
+border-top: 1px solid rgb(255, 255, 255);
+}
+
+.btn-instruction {
+  font-family: "Caveat", serif;
+  font-size: 16px;
+  letter-spacing: 2px;
+  text-decoration: none;
+  text-transform: uppercase;
+  color: #000;
+  cursor: pointer;
+  border: 3px solid;
+  padding: 0.25em 0.5em;
+  box-shadow: 1px 1px 0px 0px, 2px 2px 0px 0px, 3px 3px 0px 0px, 4px 4px 0px 0px, 5px 5px 0px 0px;
+  position: relative;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+}
+
+.btn-instruction:active {
+  box-shadow: 0px 0px 0px 0px;
+  top: 5px;
+  left: 5px;
+}
+
+.footer-text{
+  color: white;
+}
+footer{
+  min-height: 30px;
+}

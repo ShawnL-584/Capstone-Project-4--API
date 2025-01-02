@@ -1,0 +1,48 @@
+<%- include('partials/header.ejs') %>
+<main>
+  <h1 class="fw-light text-center">Today's Special</h1>
+  <div class="card" style="background: url('<%= content.strDrinkThumb %>')">
+
+    <!-- instruction button-->
+    <button type="button" class="btn-instruction mt-2" data-bs-toggle="modal" data-bs-target="#InstructionModal">
+      Instruction
+    </button>
+
+    <div class="modal fade" id="InstructionModal" tabindex="-1" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-body">
+            <h2>Instruction</h2>
+            <p><%= content.strInstructions %></p>
+          </div>
+
+          <div class="modal-body">
+            <h2>Ingredients</h2>
+            <div class="ingredients-list">
+              <% Object.keys(content).forEach(key => { %> <% if (key.startsWith('strIngredient') && content[key]) { %>
+              <div>
+                <span class="ingredients-measure">
+                  <%= content[`strMeasure${key.replace('strIngredient', '')}`] || '' %>
+                </span>
+                <span class="ingredients-name"> <%= content[key] %></span>
+              </div>
+              <% } %> <% }) %>
+            </div>
+          </div>
+
+          <div>
+            <h4>Glass - <%= content.strGlass %></h4>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+  </div>
+ <div class="drink-name text-center mt-2">
+  <span class="text-bg-dark"><%= content.strDrink %></span>
+</div>
+</main>
+<%- include('partials/footer.ejs') %>
